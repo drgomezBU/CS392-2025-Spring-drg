@@ -1,0 +1,10 @@
+High-Level Description: The 8-Queens puzzle can be modeled as a state-space search problem.
+State Representation: A state can be a partial board configuration where a certain number of queens have been placed safely. For example, I can represent a state by an array of column positions for queens placed on rows 0 up to k-1. The index of the array represents the row, and the value is the column of the queen on that row.
+Initial State: No queens on the board (an empty configuration).
+Goal State: Eight queens placed such that none attack each other (one queen in each row 0–7 with no conflicts).
+Successor Generation: From a state with r queens placed (on rows 0 through r-1), generate successor states by placing a queen on the next row r in any column that is not attacked by the existing queens. This requires checking that the chosen column is different from all existing queens’ columns and not on the same diagonal as any existing queen.
+
+DFS Approach: A depth-first search will place a queen on the first row, then recursively place the next queen on the second row, and so on. It explores one placement path fully (backtracking when a placement leads to a dead-end) before trying the next column. This corresponds to the classic backtracking solution for 8-Queens, using a stack (or recursion) to remember the path of placed queens.
+BFS Approach: A breadth-first search would explore placements level by level. First, it considers all possible positions for the queen on row 0; then for each of those partial configurations, it considers all safe positions for a queen on row 1, and so forth. BFS uses a queue to systematically explore all configurations with 1 queen, then 2 queens, etc., until it finds a complete solution. While BFS is less common for 8-Queens (due to exploring many partial states), it will find a solution by expanding outward row by row.
+
+I will define a class EightQueensState to represent the board state, and use lambdas for the goal test and successor generation and utilize generalized implementations of DFS and BFS to solve.

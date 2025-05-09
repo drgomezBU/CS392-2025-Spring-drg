@@ -1,7 +1,10 @@
 @SuppressWarnings("unchecked")
 public class Assign02_03<T> implements Deque<T> {
-    private T[] deque;
-    private int front, rear, size, capacity;
+    T[] deque;
+    int front;
+    int rear;
+    private int size;
+    int capacity;
 
     public Assign02_03() {
         capacity = 10;

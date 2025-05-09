@@ -1,0 +1,11 @@
+High-Level Description: The Game of 24 is formulated as a search problem where each state is a multiset of numbers and operations combine numbers until the target value 24 is reached.
+I start with four numbers and apply arithmetic operations step by step.
+State Representation: A state is a list of remaining numbers. Initially, it contains the four given numbers (as doubles, to accommodate division results).
+Initial State: The list of the four starting numbers (e.g. [8.0, 3.0, 8.0, 3.0] for demonstration).
+Goal State: A state with a single number that equals 24 (within a small tolerance, since division may produce floating-point errors).
+Successor Generation: From a state with n numbers, pick any two distinct numbers and replace them with the result of one arithmetic operation. The possible operations are addition (a+b), subtraction (a-b and b-a), multiplication (a*b), and division (a/b and b/a). Each operation yields a new list with n-1 numbers. (I only consider division when the divisor is not zero to avoid invalid states.)
+
+DFS Approach: Depth-first search will recursively try every possible operation on every pair of numbers, exploring one sequence of operations fully before backtracking. This will find a solution if one exists, but may traverse deep into one combination before trying others.
+BFS Approach: Breadth-first search will explore all results of one operation first (all states with 3 numbers), then all results of two operations (states with 2 numbers), and so on. This level-by-level approach ensures the shortest sequence of operations leading to 24 is found first (though all solutions require exactly 3 operations in this game). BFS uses a queue to manage states, potentially exploring many combinations in parallel.
+
+I will define a class GameOf24State with methods to test the goal and to generate successor states (all possible outcomes of one operation on two numbers) and utilize generalized implementations of DFS and BFS to solve.

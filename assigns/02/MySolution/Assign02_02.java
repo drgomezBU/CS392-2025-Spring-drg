@@ -1,3 +1,4 @@
+
 public class Assign02_02 {
     /*
       HX-2025-02-13: 10 points

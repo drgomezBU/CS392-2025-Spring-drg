@@ -1,5 +1,5 @@
 public class Assign02_04<T> implements Deque<T> {
-    private class Node {
+    class Node {
         T data;
         Node prev, next;
 
@@ -8,7 +8,8 @@ public class Assign02_04<T> implements Deque<T> {
         }
     }
 
-    private Node front, rear;
+    Node front;
+    Node rear;
     private int size;
 
     public Assign02_04() {
